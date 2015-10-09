@@ -11,10 +11,10 @@ var main = function(){
 			animate: true, 
 			containment: "parent", 
 			helper: "ui-resizable-helper", 
-			maxHeight: 422, 
-			maxWidth: 802, 
-			minHeight: 105, 
-			minWidth: 200,
+			maxHeight: 482, 
+			maxWidth: 951, 
+			minHeight: 123, 
+			minWidth: 239,
 			ghost: true,
 			autoHide: true
 			// alsoResize: document.this.childNodes
@@ -27,10 +27,12 @@ var main = function(){
 $(document).ready(main);
 
 
+
 var canvases = [];
  
 
 init();
+animate();
 
 function init(){
 
@@ -42,7 +44,7 @@ function init(){
 
 	var fudge = 0.45;
 
-			// canvases.push( new ScreenShow( 'Tv1',  rot * -7 * fudge ) );
+			canvases.push( new ScreenShow( 'Tv1',  rot * -7 * fudge ) );
 			canvases.push( new ScreenShow( 'Tv2',  rot * -6 * fudge ) );
 			canvases.push( new ScreenShow( 'Tv3',  rot * -5 * fudge ) );
 			canvases.push( new ScreenShow( 'Tv4',  rot * -4 * fudge ) );
@@ -70,154 +72,171 @@ function animate(){
 }
 
 function ScreenShow(containerID, rotateY){
-	var container;
+	var container, stats;
+	// var videos = [];
 
-	var camera, scene, renderer;
+	var virtualCamera, camera, scene, renderer, united;
 
 	var mesh, light;
 
+	var dae;
+
 	var mouseX = 0, mouseY = 0;
-	var cameraZ = 1000;
+	var cameraZ = 1800;
 
 	var windowHalfX = window.innerWidth/2;
 	var windowHalfY = window.innerHeight/2;
 
 	var rendertime = 0;
 	var renderToggle = false;
-	var screenHolder;
+
+	var glitchPass, bloomPass;
 
 	init();
+	// animate();
+
+	function updateOptions() {
+				glitchPass.goWild=canvases.checked;
+			}
+
 
 	function init(){
 		container = document.getElementById(containerID);
 
 		camera = new THREE.PerspectiveCamera(20, container.clientWidth / container.clientHeight, 1, 20000);
-		camera.position.z = 500;
+		camera.position.y = rotateY;
+
+		virtualCamera = new THREE.Camera();
+		virtualCamera.add( camera );
+		virtualCamera.position.z = cameraZ;
 
 		scene = new THREE.Scene();
-		// scene.fog = new THREE.fog( 0x000000, 2000, 3000 );
+		scene.add(virtualCamera);
 
 		light = new THREE.DirectionalLight( 0xffffff );
 		light.position.set( 0, 0, 1 ).normalize();
-			scene.add( light );
+		scene.add( light );
 
-					
+			// light.position.x = Math.random() - 0.5;
+   //          light.position.y = Math.random() - 0.5;
+   //          light.position.z = Math.random() - 0.5;
+
+		// var noof_balls = 51;
+
 		var canvas = document.createElement( 'canvas' ); 
 
+		var context = canvas.getContext( '2d' );
+		var gradient = context.createRadialGradient(canvas.width/2, canvas.height/2,0, canvas.width/2, canvas.height/2, canvas.width/2);
+		gradient.addColorStop(0.1, 'rgba(210,210,210,1)');
+		gradient.addColorStop(1, 'rgba(255,255,255,1)');
 
-	var WhiteRing2 = function() { //trying to build this on my own! following the origional code for the beat detection though
+		context.fillStyle = gradient;
+		context.fillRect(0,0, canvas.width, canvas.height);
 
+		var loader = new THREE.ColladaLoader();
 
-	var groupHolder; // Need this (I dont know why D:)
-	var material;
-
-	var constructs = []; // Geometry array!
-
-	var scl = 0; // dont know what this does
-
-	function init(){
-
-
-		events.on("update", update); // for Beat detection
-		events.on("onBeat", onBeat);
-
-
-		var radius = 300;
-		groupHolder = new THREE.Object3D();
-		screenHolder.add(groupHolder);
-
-		material = new THREE.MeshBasicMaterial( { // Rendering the Geometry!
-			color: 0xFF3399, 
-			wireframe: false,
-			transparent:false,
-			opacity:3
-		} );
+		loader.load('Resources/data2.dae', function (collada){
+		dae = collada.scene;
+		dae.scale.set(30,30,30);
+		scene.add(dae);
+		});
 
 
-	//Geometry shapes!
-		geometry = new THREE.RingGeometry( radius*.8,radius, 50,3, 3, Math.PI*2) ;
-		mesh = new THREE.Mesh( geometry, material );
-		groupHolder.add( mesh );
-		constructs.push(mesh); //adds to the array!
 
-		geometry = new THREE.CubeGeometry(100,100,100);
-		mesh = new THREE.Mesh(geometry, material);
-		groupHolder.add(mesh);
-		constructs.push(mesh);
-
-		geometry = new THREE.RingGeometry( radius*.6,radius, 3,1, 0, Math.PI*2) ;
-		mesh = new THREE.Mesh( geometry, material );
-		groupHolder.add( mesh );
-		constructs.push(mesh);
-
-
-		geometry = new THREE.RingGeometry( radius*.6,radius, 24,1, 0, Math.PI*2) ;
-		mesh = new THREE.Mesh( geometry, material );
-		groupHolder.add( mesh );
-		constructs.push(mesh);
-
-		geometry = new THREE.RingGeometry( radius*.6,radius, 8,1, 0, Math.PI*2) ;
-		mesh = new THREE.Mesh( geometry, material );
-		groupHolder.add( mesh );
-		constructs.push(mesh);
+		renderer = new THREE.WebGLRenderer({ anialias: true });
+		// renderer.setSize(450,220);
+		renderer.setClearColor ( 0x000000 );
+		renderer.setPixelRatio( window.devicePixelRatio);
+		renderer.setSize( container.clientWidth, container.clientHeight);
+		container.appendChild( renderer.domElement );
 
 		
 
-		count = constructs.length; 
+		united = new THREE.EffectComposer(renderer);
+		united.addPass( new THREE.RenderPass(scene, camera));
+		glitchPass = new THREE.GlitchPass();
+		// bloomPass = new THREE.BloomPass();
+		glitchPass.renderToScreen = true;
+		// united.addPass (bloomPass);
+		united.addPass (glitchPass);
+
+
+		// effect = new THREE.AsciiEffect( renderer );
+		// effect.setSize( 450, 220 );
+		// effect.setSize( container.clientWidth, container.clientHeight);
+		// container.appendChild( effect.domElement );
+
+
+		stats = new Stats();
+		stats.domElement.style.position = 'absolute';
+		stats.domElement.style.top = '0px';
+		container.appendChild( stats.domElement );
+
+		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
+		document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
+
+		// scene.fog = new THREE.fog( 0x000000, 2000, 3000 );
+
+
+		// var videoTexture = new THREEx.VideoTexture('Resources/EnterTheBeast.mp4');
+		// var video = videoTexture.video;
+
+
+		// var geometry =  new THREE.CubeGeometry(1,1,1);
+		// var material = new THREE.MeshBasicMaterial({
+		// 	map : videoTexture.texture
+		// });
+
+		// mesh = new THREE.Mesh(geometry, material);
+		// scene.add(mesh);
+
+		// videos.push(function(delta, now){
+		// 	videoTexture.update(delta, now);
+		// 	renderer.render( scene, camera)
+		// })
 
 	}
 
-	function showNewShape() { // this is required for the shapes to move (also breaks the origonal code if tampered with (super SPeed))
 
-		groupHolder.rotation.z = Math.random()*Math.PI;
+			function onDocumentMouseMove ( event ) {
 
-		for (var i = 0; i <= count-1;i++){
-			constructs[i].rotation.y = Math.PI/2; //Breaks everything glad i kept it! :S
-		}
+					mouseX = ( event.clientX - windowHalfX );
+					mouseY = ( event.clientY - windowHalfY );
 
-		if (Math.random() < .5){
-			var r = Math.floor(Math.random() * count);
-			constructs[r].rotation.y = Math.random()*Math.PI/4-Math.PI/8;
-		}
+				}
 
-	}
+				function onDocumentMouseWheel ( event ) {
 
-	function update() { // updates the thingy with the beats
-		groupHolder.rotation.z += 0.01; 
-		var gotoScale = AudioHandler.getVolume()*1.2 + .1;
-		scl += (gotoScale - scl)/3;
-		groupHolder.scale.x = groupHolder.scale.y = groupHolder.scale.z = scl;
-	}
+					var delta = 0;
 
-	function onBeat(){
-		showNewShape();
-	}
+					if ( event.wheelDelta ) {
 
-	return {
-		init:init, // thought i might need this since its in the origonal code
-		update:update,
-		onBeat:onBeat,
-	};
-	}();
+						delta = event.wheelDelta / 120;
+						if ( window.opera ) delta = -delta;
 
+					} else if ( event.detail ) {
 
-		renderer = new THREE.WebGLRenderer({ anialias: false });
-		renderer.setSize(350,190);
-		renderer.setClearColor ( 0x000000 );
-		container.appendChild( renderer.domElement );
+						delta = -event.detail / 3;
 
-		screenHolder = new THREE.Object3D();
-			scene.add(screenHolder);
+					}
 
-		activeViz = [WhiteRing2];
+					if ( delta ) {
 
-		activeVizCount = activeViz.length;
-					for ( var j = 0; j < activeVizCount; j ++ ) {
-						activeViz[j].init();
+						if ( delta < 0 ) {
+
+							cameraZ -= 200;
+
+						} else {
+
+							cameraZ += 200;
+
+						}
+
+					}
+
 				}
 
 
-	}
 				function update() {
 					rendertime += 0.01;
 
@@ -229,12 +248,19 @@ function ScreenShow(containerID, rotateY){
 				this.animate = function() {
 
 					render();
+					united.render(); // new renderer to render scenes
+					stats.update();
 
 				};
 
 				function render() {
 
-					renderer.render( scene, camera );
-
+					
+					virtualCamera.position.x = -mouseX *4;
+					virtualCamera.position.y = -mouseY *4;
+					virtualCamera.position.z = cameraZ;
+					virtualCamera.lookAt( scene.position );
+					// renderer.render( scene, camera );
+					// effect.render( scene, camera );
 				}
 };

@@ -27,19 +27,19 @@
 			<div class="row"> 	
 				
 				<div class="draggable">
-					<div id="Tv1" class="tv"></div>
+					<div id="Tv1" class="tv screen1"></div>
 				</div>
 
 				<div class="draggable">
-					<div id="Tv2" class="tv"></div>
+					<div id="Tv2" class="tv screen2"></div>
 				</div>
 
 				<div class="draggable">
-					<div id="Tv3" class="tv"></div>
+					<div id="Tv3" class="tv scren3"></div>
 				</div>
 
 				<div class="draggable">
-					<div id="Tv4" class="tv"></div>
+					<div id="Tv4" class="tv screen4"></div>
 				</div>
 
 				<div class="draggable">
@@ -96,8 +96,8 @@
 		<div class="container2">
 			<div>HELLO THERE....</div>
 			<div id="controls">
-		<div id="debugText"></div>
-		<canvas id="audioDebug" width=250 height=200></canvas>
+		<!-- <div id="debugText"></div> -->
+		<canvas id="audioDebug" width=20 height=20></canvas>
 		<!--<div id="settings"></div>-->
 	</div>
 		</div>
@@ -110,34 +110,46 @@
   		<!--ThreeJs-->
   		<script src="../lib/three.min.js"></script>
   		<script src="../lib/jquery-1.9.1.min.js"></script>
+  		<script src="../lib/threex.videotexture.js"></script>
+  		<!--<script src="../lib/threex.webcamtexture.js"></script>-->
+  		<script src="../lib/ColladaLoader.js"></script>
+  		<script src="../lib/Detector.js"></script>
+		<script src='../lib/stats.min.js'></script>
 
   		<!--WebGL-->
   		<script src="../lib/webgl.utils.js"></script>
 
+  		<!--PostProcessing-->
+  		<script src="../lib/postprocessing/RenderPass.js"></script>
+		<script src="../lib/postprocessing/ShaderPass.js"></script>
+		<script src="../lib/postprocessing/MaskPass.js"></script> 
+		<script src="../lib/postprocessing/BloomPass.js"></script>
+		<script src="../lib/postprocessing/EffectComposer.js"></script>
+		<script src="../lib/postprocessing/GlitchPass.js"></script>
 
-  	<script src="../lib/minivents.min.js"></script>
+  		<!--<script src="../lib/shaders/BadTVShader.js"></script>
+  		<script src="../lib/minivents.min.js"></script>
 
-	<script src="../lib/Detector.js"></script>
 	
-	<script src='../lib/stats.min.js'></script>
+
 	<script src='../lib/dat.gui.min.js'></script>
 	<script src="../lib/SimplexNoise.js"></script>
 	<script src="../lib/atutil.js"></script>
 
-	<script src="../lib/shaders/AdditiveBlendShader.js"></script>
+	<script src="../lib/shaders/AdditiveBlendShader.js"></script>-->
 	<script src="../lib/shaders/BadTVShader.js"></script>
 
-	<script src="../lib/postprocessing/EffectComposer.js"></script>
+	<!--<script src="../lib/postprocessing/EffectComposer.js"></script>
 	<script src="../lib/postprocessing/RenderPass.js"></script>
 	<script src="../lib/postprocessing/ShaderPass.js"></script>
 	<script src="../lib/postprocessing/MaskPass.js"></script> 
-	<script src="../lib/postprocessing/BloomPass.js"></script>
+	<script src="../lib/postprocessing/BloomPass.js"></script>-->
 	
 	
 	
-	<script src="js/Main.js"></script>
+	<!--<script src="js/Main.js"></script>-->
 
-	<script src="js/AudioHandler.js"></script>
+	<!--<script src="js/AudioHandler.js"></script>
 	<script src="js/ControlsHandler.js"></script>
 	<script src="js/FXHandler.js"></script>
 
@@ -146,7 +158,8 @@
 	<script src="js/viz/Bars.js"></script>
 	<script src="js/viz/WhiteRing_der.js"></script>
 	
-	<script src="js/VizHandler.js"></script>
+	<script src="js/VizHandler.js"></script>->
+
 
   		<!--Shaders-->
   		<script src="../lib/shaders/CopyShader.js"></script>
@@ -156,6 +169,8 @@
 		<script src="../lib/shaders/MirrorShader.js"></script>
 		<script src="../lib/shaders/RGBShiftShader.js"></script>
 		<script src="../lib/shaders/FilmShader.js"></script>
+		<script src="../lib/shaders/AsciiEffect.js"></script>
+		<script src="../lib/shaders/DigitalGlitch.js"></script>
 
 		<!--JQUERY UI PLUGIN -->
 		<script src="js/jquery/jquery-ui.js"></script>

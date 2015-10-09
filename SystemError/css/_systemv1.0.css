@@ -7,7 +7,7 @@ body{
 	font-family: dataerror;
 	background-color: #111;
 	margin: 0px;
-	/*overflow: hidden;*/
+	overflow: hidden;
 	color: #fff;
 	padding:0;
 	/*height:100%;*/
@@ -19,9 +19,9 @@ li{
 	/*border: 1px solid indigo;*/
 }
 canvas{
-	border: 1px dotted green;
-	width:350px;
-	height:190px;
+	/*border: 1px dotted green;*/
+	width:450px;
+	height:220px;
 	border-radius: 60px;
 	margin-top: -1px;
 	margin-left: -1px;
@@ -30,19 +30,23 @@ canvas{
 	position: relative;
 	width: 84.25%;
 	/*min-width: 400px;*/
-	max-width: 85%;
-	max-height: 80%;
-	/*height: 100%;*/
+	/*max-width: 85%;*/
+	width: 99%;
+	/*max-height: 90%;*/
+
+	height: 100%;
 	/*border: 1px solid crimson;*/
 }
 .container2{
 	width: 100%;
-	border: 1px solid crimson;
+	position: fixed;
+	/*border: 1px solid crimson;*/
+	margin-top: -10px;
 }
 .draggable{
 	position: relative;
-	width:400px;
-	height:210px;
+	width:474px;
+	height:240px;
 	float: left;
 	min-width: 100px;
 	min-height: 100px;
@@ -52,10 +56,10 @@ canvas{
 .tv{
 	position: relative;
 	/*background-color: #000;*/
-	border: 1px solid crimson;
+	/*border: 1px solid crimson;*/
 	border-radius: 60px;
-	width:350px;
-	height:190px;
+	width:450px;
+	height:220px;
 	/*float: left;*/
 	min-width: 100px;
 	min-height: 100px;
@@ -66,3 +70,31 @@ canvas{
 .ui-resizable-helper { 
 	border: 2px dotted #00F; 
 }
+#audioDebug{
+	width: 20px;
+	height: 20px;
+}
+
+/*	.tv > .screen1 {
+      -webkit-transform: rotateY(300deg) translateZ(-380px);
+      -moz-transform: rotateY(300deg) translateZ(-380px);
+      transform: rotateY(300deg) translateZ(-380px);
+    }
+
+    .tv > .screen2 {
+      -webkit-transform: rotateY(330deg) translateZ(-380px);
+      -moz-transform: rotateY(330deg) translateZ(-380px);
+      transform: rotateY(330deg) translateZ(-380px);
+    }
+
+    .tv > .screen3 {
+      -webkit-transform: rotateY(0deg) translateZ(-380px);
+      -moz-transform: rotateY(0deg) translateZ(-380px);
+      transform: rotateY(0deg) translateZ(-380px);
+    }
+
+    .tv > .screen4 {
+      -webkit-transform: rotateY(30deg) translateZ(-380px);
+      -moz-transform: rotateY(30deg) translateZ(-380px);
+      transform: rotateY(30deg) translateZ(-380px);
+    }*/
