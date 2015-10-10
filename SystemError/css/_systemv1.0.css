@@ -26,6 +26,35 @@ canvas{
 	margin-top: -1px;
 	margin-left: -1px;
 }
+
+		/*Id's */
+#console{
+ 	border-top: 1px solid crimson;
+ 	border-left: 1px solid crimson;
+ 	border-right: 1px solid crimson;
+	float: left;
+ 	width: 474px;
+ 	height: 90px;
+	margin-left: 10px;
+	text-align: center;
+ 	background-color: black;
+ 	opacity: 0.6;
+}
+#manifesto{
+	border-top: 1px solid crimson;
+ 	border-left: 1px solid crimson;
+ 	border-right: 1px solid crimson;
+ 	background-color: black;
+ 	opacity: 0.6;
+ 	float: right;
+ 	margin-right: 12px;
+ 	text-align: center;
+ 	width: 270px;
+ 	height: 90px;
+
+}
+
+		/*classes*/
 .container{
 	position: relative;
 	width: 84.25%;
@@ -41,7 +70,7 @@ canvas{
 	width: 100%;
 	position: fixed;
 	/*border: 1px solid crimson;*/
-	margin-top: -10px;
+	margin-top: -60px;
 }
 .draggable{
 	position: relative;
@@ -70,31 +99,7 @@ canvas{
 .ui-resizable-helper { 
 	border: 2px dotted #00F; 
 }
-#audioDebug{
-	width: 20px;
-	height: 20px;
+.console-title{
+	margin-top: -12px;
+	margin-left: -250px;
 }
-
-/*	.tv > .screen1 {
-      -webkit-transform: rotateY(300deg) translateZ(-380px);
-      -moz-transform: rotateY(300deg) translateZ(-380px);
-      transform: rotateY(300deg) translateZ(-380px);
-    }
-
-    .tv > .screen2 {
-      -webkit-transform: rotateY(330deg) translateZ(-380px);
-      -moz-transform: rotateY(330deg) translateZ(-380px);
-      transform: rotateY(330deg) translateZ(-380px);
-    }
-
-    .tv > .screen3 {
-      -webkit-transform: rotateY(0deg) translateZ(-380px);
-      -moz-transform: rotateY(0deg) translateZ(-380px);
-      transform: rotateY(0deg) translateZ(-380px);
-    }
-
-    .tv > .screen4 {
-      -webkit-transform: rotateY(30deg) translateZ(-380px);
-      -moz-transform: rotateY(30deg) translateZ(-380px);
-      transform: rotateY(30deg) translateZ(-380px);
-    }*/
