@@ -5,12 +5,24 @@
 body{
 	/*font-size: 12px;*/
 	font-family: dataerror;
-	background-color: #111;
+	background-color: #222;
 	margin: 0px;
 	overflow: hidden;
 	color: #fff;
 	padding:0;
 	/*height:100%;*/
+	/*background-image: url("../resources/SysteemError.png");
+	-webkit-background-size: cover;
+  	-moz-background-size: cover;
+  	-o-background-size: cover;
+ 	background-size: cover;*/
+
+ 	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }
 ul{
     list-style-type: none;
@@ -19,12 +31,26 @@ li{
 	/*border: 1px solid indigo;*/
 }
 canvas{
-	/*border: 1px dotted green;*/
+	border: 8px solid black;
 	width:450px;
 	height:220px;
 	border-radius: 60px;
 	margin-top: -1px;
 	margin-left: -1px;
+
+}
+a:link{
+	color: red;
+}
+a:visited{
+	color: #7F2C26;
+}
+a:hover{
+	color: #7F2C26;
+	text-decoration: none;
+}
+a:active{
+	text-decoration: none;
 }
 
 		/*Id's */
@@ -33,7 +59,7 @@ canvas{
  	border-left: 1px solid crimson;
  	border-right: 1px solid crimson;
 	float: left;
- 	width: 474px;
+ 	width: 800px;
  	height: 90px;
 	margin-left: 10px;
 	text-align: center;
@@ -41,26 +67,26 @@ canvas{
  	opacity: 0.6;
 }
 #manifesto{
-	border-top: 1px solid crimson;
- 	border-left: 1px solid crimson;
- 	border-right: 1px solid crimson;
- 	background-color: black;
  	opacity: 0.6;
  	float: right;
  	margin-right: 12px;
+ 	margin-top: 26px;
  	text-align: center;
  	width: 270px;
  	height: 90px;
-
+}
+#drop li.highlights {
+	background: yellow;
 }
 
 		/*classes*/
 .container{
-	position: relative;
-	width: 84.25%;
+	position: fixed;
+	width: 99%;
+	margin-left: -10px;
 	/*min-width: 400px;*/
 	/*max-width: 85%;*/
-	width: 99%;
+	/*min-width: 99%;*/
 	/*max-height: 90%;*/
 
 	height: 100%;
@@ -70,17 +96,17 @@ canvas{
 	width: 100%;
 	position: fixed;
 	/*border: 1px solid crimson;*/
-	margin-top: -60px;
+	margin-top: 900px;
 }
 .draggable{
 	position: relative;
-	width:474px;
+	width:465px;
 	height:240px;
 	float: left;
 	min-width: 100px;
 	min-height: 100px;
 	margin: 0 auto;
-	border: 1px solid indigo;
+	/*border: 1px solid indigo;*/
 }
 .tv{
 	position: relative;
@@ -94,6 +120,7 @@ canvas{
 	min-height: 100px;
 	margin: 0 auto;
 	margin-top: 10px;
+	box-shadow: 5px 5px 5px 5px #111111;
 
 }
 .ui-resizable-helper { 
@@ -101,5 +128,15 @@ canvas{
 }
 .console-title{
 	margin-top: -12px;
-	margin-left: -250px;
+	margin-left: -470px;
 }
+.console-text{
+	font-size: 40px;
+}
+.typed-cursor{
+    opacity: 0;
+    -webkit-animation: blink 0.7s infinite;
+    -moz-animation: blink 0.7s infinite;
+    animation: blink 0.7s infinite;
+}
+
