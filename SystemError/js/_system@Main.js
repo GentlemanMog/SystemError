@@ -1,15 +1,12 @@
 
-// var getE;
-
-// var newPosition;
-// var currentId;
+//Booleans for events
 var dead1, dead2, dead3, dead4, dead5, dead6, dead7, dead8;
 
 var main = function(){
+	
 	// $('#drop').sortable('toArray');
 
-	var breakWindow = false;
-
+//Sortable Div Tags Jquery UI 
 	$("#drop").sortable({
 		containment: "parent",
 		snapMode: "outer",
@@ -17,16 +14,16 @@ var main = function(){
 		animate: true,
 		zIndex: 10,
 
-		start: function(event, ui){
-			currentId = ui.item.attr("id");
-			 // alert("Current: " + ui.item.index() + ui.item.attr("id"));
-		},
-		stop: function(event, ui) {
+	start: function(event, ui){
+		currentId = ui.item.attr("id");
+		// alert("Current: " + ui.item.index() + ui.item.attr("id"));
+	},
+
+//Once Div has been placed trigger event
+	stop: function(event, ui) {
 		newPosition = ui.item.index();
 
 		if (ui.item.attr("id") == "f1" && ui.item.index() == 3) {
-		// alert("New position: " + newPosition + currentId);
-		// window.close();
 			alert("You need more Tabs open User, your work is insufficient");
 
 			window.open();
@@ -56,10 +53,7 @@ var main = function(){
 		}
 
 		else if (ui.item.attr("id") == "f2" && ui.item.index() == 6) {
-		// alert("New position: " + newPosition + currentId);
-		// window.close();
 			alert("You need more Tabs open User, your work is insufficient");
-
 			window.open();
 			window.open();
 			window.open();
@@ -87,10 +81,8 @@ var main = function(){
 		};
 
 		
-
-		  if (ui.item.attr("id") == "f1" && ui.item.index() == 1) {
-		// alert("New position: " + newPosition + currentId);
-		// window.close();
+//If Certain div's are ina specific place close the window
+		 if (ui.item.attr("id") == "f1" && ui.item.index() == 1) {
 		dead1 = true;
 		window.confirm("Bug Splat");
 		}else if(ui.item.attr("id") == "f4" && ui.item.index() == 2){
@@ -121,84 +113,50 @@ var main = function(){
 			window.confirm("Protocol 10 Initiated, Commencing with User Deresolution");
 			window.close();
 		};
-        // alert("New position: " + ui.item.index() + ui.item.attr("id"));
 
       
-    	}
+    }
         
 	}).disableSelection();
 
-	// $('.draggable').resizable({ 
-	// 		animate: true, 
-	// 		containment: "parent", 
-	// 		helper: "ui-resizable-helper", 
-	// 		maxHeight: 482, 
-	// 		maxWidth: 951, 
-	// 		minHeight: 123, 
-	// 		minWidth: 239,
-	// 		ghost: true,
-	// 		autoHide: true
-	// 		// alsoResize: document.this.childNodes
-	// });
+
+//Make Div tag resizable
+	$('.draggable').resizable({ 
+			animate: true, 
+			containment: "parent", 
+			helper: "ui-resizable-helper", 
+			maxHeight: 482, 
+			maxWidth: 951, 
+			minHeight: 123, 
+			minWidth: 239,
+			ghost: true,
+			autoHide: true,
+			start: function(event, ui){
+				originH = $(this).height();
+				originW = $(this).width();
+
+
+			}
+			// alsoResize: $(this).find('div')
+			// aspectRatio: true
+	});
 }
 
 $(document).ready(main);
 
 
+// THREEJS STUFF
 
+//setup
 var canvases = [];
 var mValX, mValY;
-var views = [
-				// {
-				// 	width: 0.5,
-				// 	height: 1.0,
-				// 	eye: [ -100, 0, 0 ],
-				// 	// up: [ 0, 1, 0 ],
-				// 	fov: 10,
-				// 	updateCamera: function ( camera, scene, mouseX, mouseY ) {
-				// 	  camera.position.x += mouseX * 0.05;
-				// 	  camera.position.x = Math.max( Math.min( camera.position.x, 2000 ), -2000 );
-				// 	  camera.lookAt( scene.position );
-				// 	}
-				// },
-				// {
-				// 	width: 0.5,
-				// 	height: 0.5,
-				// 	eye: [ 0, 0, 0 ],
-				// 	// up: [ 0, 0, 1 ],
-				// 	fov: 45,
-				// 	updateCamera: function ( camera, scene, mouseX, mouseY ) {
-				// 	  camera.position.x -= mouseX * 0.05;
-				// 	  camera.position.x = Math.max( Math.min( camera.position.x, 2000 ), -99 );
-				// 	  camera.lookAt( camera.position.clone().setY( 0 ) );
-				// 	}
-				// },
-				{
-					width: 0.5,
-					height: 0.5,
-					eye: [ -10, 0, 0 ],
-					// up: [ 0, 1, 0 ],
-					fov: 20,
-					updateCamera: function ( camera, mouseX, mouseY ) {
-				// 	  camera.position.y -= mouseX * 0.05;
-				// 	  camera.position.x -= mouseY * 0.05;
-				// 	  if(mouseX < 0){
-				// 	  	mValY = 99;
-				// 	  }else{
-				// 	  	mValY = -99;
-				// 	  };
-				// 	  if (mouseY < 0) {
-				// 	  	mValX = 99;
-				// 	  }else{
-				// 	  	mValX = -99;
-				// 	  };
-				// 	  camera.position.y = Math.max( Math.min( camera.position.y, 299 ), mValY );
-				// 	  camera.position.x = Math.max( Math.min( camera.position.x, 200 ), mValX );
-				// 	  // camera.lookAt( scene.position );
-					}
-				}
-			];
 
+
+		// var videoTexture = new THREEx.VideoTexture('Resources/EnterTheBeast.mp4');
+		
+			
+
+//Initialize
 init();
 animate();
 
@@ -208,43 +166,64 @@ function init(){
 		return d * Math.PI/180;
 	}
 
-	var rot = degToRad(30);
+	var TvA = document.getElementById('Tv1');
+	var TvB = document.getElementById('Tv2');
+	var TvC = document.getElementById('Tv3');
+	var TvD = document.getElementById('Tv4');
+	var TvE = document.getElementById('Tv5');
+	var TvF = document.getElementById('Tv6');
+	var TvG = document.getElementById('Tv7');
+	var TvH = document.getElementById('Tv8');
+	var TvI = document.getElementById('Tv9');
+	var TvJ = document.getElementById('Tv10');
+	var TvK = document.getElementById('Tv11');
+	var TvL = document.getElementById('Tv12');
+	var TvM = document.getElementById('Tv13');
+	var TvN = document.getElementById('Tv14');
+	var TvO = document.getElementById('Tv15');
+	var TvP = document.getElementById('Tv16');
 
-	var fudge = 0.45;
+	var fullWidth = 1920;
+	var fullHeight = 1080;
 
-			canvases.push( new ScreenShow( 'Tv1',  rot * -7 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv2',  rot * -6 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv3',  rot * -5 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv4',  rot * -4 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv5',  rot * -3 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv6',  rot * -2 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv7',  rot * -1 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv8',  rot * 0 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv9',  rot * 1 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv10', rot * 2 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv11', rot * 3 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv12', rot * 4 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv13', rot * 5 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv14', rot * 6 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv15', rot * 7 * fudge ) );
-			canvases.push( new ScreenShow( 'Tv16', rot * 8 * fudge ) );
+
+//push canvases into the array and setup screens
+			canvases.push( new ScreenShow( 'Tv1', fullWidth, fullHeight, -300,300 , TvA.clientWidth, TvA.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv2', fullWidth, fullHeight, 100,300, TvB.clientWidth, TvB.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv3', fullWidth, fullHeight, 500,300, TvC.clientWidth, TvC.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv4', fullWidth, fullHeight, 900, 300, TvD.clientWidth, TvD.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv5', fullWidth, fullHeight, -300,510, TvE.clientWidth, TvE.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv6', fullWidth, fullHeight, 100,510, TvF.clientWidth, TvF.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv7', fullWidth, fullHeight, 500,510, TvG.clientWidth, TvG.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv8', fullWidth, fullHeight, 900, 510, TvH.clientWidth, TvH.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv9', fullWidth, fullHeight, -300,720, TvI.clientWidth, TvI.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv10', fullWidth, fullHeight, 100,720, TvJ.clientWidth, TvJ.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv11', fullWidth, fullHeight, 500, 720, TvK.clientWidth, TvK.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv12', fullWidth, fullHeight, 900, 720, TvL.clientWidth, TvL.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv13', fullWidth, fullHeight, -300,930, TvM.clientWidth, TvM.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv14', fullWidth, fullHeight, 100, 930, TvN.clientWidth, TvN.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv15', fullWidth, fullHeight, 500, 930, TvO.clientWidth, TvO.clientHeight ) );
+			canvases.push( new ScreenShow( 'Tv16', fullWidth, fullHeight, 900,930, TvP.clientWidth, TvP.clientHeight ) );
 
 			
-				
+
+						
 }
+
 
 function animate(){
 	for(var i = 0; i < canvases.length; ++ i){
 		canvases[i].animate();
-		views[i];
 	}
 
 	requestAnimationFrame(animate);
 }
 
-function ScreenShow(containerID, rotateY){
+
+
+function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight){
 	var container, stats;
-	// var videos = [];
+	
 
 	var virtualCamera, scene, renderer, united;
 	var camera;
@@ -254,115 +233,107 @@ function ScreenShow(containerID, rotateY){
 	var dae;
 
 	var mouseX = 0, mouseY = 0;
-	var cameraZ = 200;
+	var cameraZ = 1800;
 
 	var windowHalfX = window.innerWidth/2;
 	var windowHalfY = window.innerHeight/2;
 
 	var rendertime = 0;
 	var renderToggle = false;
-
-	var windowWidth, windowHeight;
-	var width, height;
+	
 
 	var glitchPass, bloomPass;
 
-	var animations, animHandler;
-    var kfAnimations = [];
-    var kfAnimationsLength = 0;
+
+	var video, videoTexture;
 
 	init();
-	// animate();
 
+//Randomizes the glitchPass
 	function updateOptions() {
-				glitchPass.goWild=canvases.checked;
-			}
+		glitchPass.goWild=canvases.checked;
+	}
 
 
 	function init(){
+
 		container = document.getElementById(containerID);
 
-		for (var ii =  0; ii < views.length; ++ii ) {
 
-					var view = views[ii];
-					camera = new THREE.PerspectiveCamera( view.fov, container.clientWidth / container.clientHeight, 1, 10000 );
-					camera.position.x = view.eye[ 0 ];
-					camera.position.y = view.eye[ 1 ];
-					camera.position.z = view.eye[ 1 ];
-					// camera.up.x = view.up[ 0 ];
-					// camera.up.y = view.up[ 1 ];
-					// camera.up.z = view.up[ 2 ];
-					view.camera = camera;
-				}
+	//Camera Setup
+		camera = new THREE.PerspectiveCamera(15, container.clientWidth / container.clientHeight, 1, 10000);
+		camera.position.x = 200;
+		camera.position.y = 100;
+		camera.setViewOffset( fullWidth, fullHeight, viewX, viewY, viewWidth, viewHeight );
+		
 
-		// camera = new THREE.PerspectiveCamera(10, container.clientWidth / container.clientHeight, 2, 2000);
-		// camera.position.x = -100;
-		// camera.position.y = rotateY;
-
+	//Setup for virtual camera, for the illusion of movement. Attaches camera to the mouselistener
 		virtualCamera = new THREE.Camera();
 		virtualCamera.add( camera );
 		virtualCamera.position.z = cameraZ;
 
+	//Important scene initialization
 		scene = new THREE.Scene();
+
 		scene.add(virtualCamera);
 
 		light = new THREE.DirectionalLight( 0xffffff );
 		light.position.set( 0, 0, 1 ).normalize();
 		scene.add( light );
 
+		// THREEx.WindowResize(renderer, camera);
+
 			// light.position.x = Math.random() - 0.5;
    			//light.position.y = Math.random() - 0.5;
    			//light.position.z = Math.random() - 0.5;
 
-		// var noof_balls = 51;
-
+   		//Set a canvas to every div in the array
 		var canvas = document.createElement( 'canvas' ); 
 
-		var context = canvas.getContext( '2d' );
-		var gradient = context.createRadialGradient(canvas.width/2, canvas.height/2,0, canvas.width/2, canvas.height/2, canvas.width/2);
-		gradient.addColorStop(0.1, 'rgba(210,210,210,1)');
-		gradient.addColorStop(1, 'rgba(255,255,255,1)');
-
-		context.fillStyle = gradient;
-		context.fillRect(0,0, canvas.width, canvas.height);
-
-
-
-
+	//Loads the Model
 		var loader = new THREE.ColladaLoader();
 
-		loader.load('Resources/data2.dae', function (collada){
-		// dae = collada.scene.children[0];
-		// animations = collada.animations;
-  //           kfAnimationsLength = animations.length;
-  //           animHandler = THREE.AnimationHandler;
-  //           for ( var i = 0; i < kfAnimationsLength; ++i )
-  //       {
-  //           var animation = animations[i];
-  //           animHandler.add(animation);
+			loader.load('Resources/data2.dae', function (collada){
+				collada.scene.traverse( function(child) {
+        			if( child instanceof THREE.Mesh ) {
 
-  //           var kfAnimation = new THREE.KeyFrameAnimation(animation.node, animation.name);
-  //           kfAnimation.timeScale = 0.01;
-  //           kfAnimations.push(kfAnimation);
-
-  //           kfAnimation.play(true, 0);
-  //       }
-		collada.scene.traverse( function(child) {
-        if( child instanceof THREE.Mesh ) {
-            child.material = new THREE.MeshBasicMaterial( { color: 0xFFFF33, wireframe: true  } );
-
-            child.scale.set(30,30,30);
-            scene.add( child );
-        }
-        // vertexColors: THREE.VertexColors
-    	});
+        				//sets a new material to the model
+           				child.material = new THREE.MeshBasicMaterial( { color: 0xFFFF33, wireframe: true  } );
+        				//scales the model to the appropriate size
+           				child.scale.set(30,30,30);
+           			//Adds the mesh to the scene
+            			scene.add( child );
+        			}
+    			});
 		// dae.scale.set(30,30,30);
 		// scene.add(dae);
-		});
+			});
+
+		//Add VIdeo funtionality to the scene
+
+			video = document.getElementById('video');
+			video.width  = 1000;
+			video.height = 1000;
+			video.autoplay = true;
+			videoTexture = new THREE.Texture( video );
+			videoTexture.format = THREE.RGBFormat;
+
+				
+
+			var geometry =  new THREE.CubeGeometry(1000,1000,2);
+			var material = new THREE.MeshBasicMaterial({
+				// map : videoTexture.texture
+				// vertexColors: THREE.FaceColors,
+				map: videoTexture
+			});
+
+
+			var mesh = new THREE.Mesh(geometry, material);
+			scene.add(mesh);
 
 
 
-
+	//Renderer setup
 		renderer = new THREE.WebGLRenderer({ anialias: true });
 		// renderer.setSize(450,220);
 		renderer.setClearColor ( 0x000000 );
@@ -370,75 +341,65 @@ function ScreenShow(containerID, rotateY){
 		renderer.setSize( container.clientWidth, container.clientHeight);
 		container.appendChild( renderer.domElement );
 
+	//Shader Setup
 		// effect = new THREE.AsciiEffect( renderer );
 		// // effect.setSize( 450, 220 );
 		// effect.setSize( container.clientWidth, container.clientHeight);
 		// // container.appendChild( effect.domElement );
 		// scene.add(effect);
 
-
+	//Sets up a effectPass and pases everything in the group inot the renderer
 		united = new THREE.EffectComposer(renderer);
 		united.addPass( new THREE.RenderPass(scene, camera));
 
-		
-
-		
-
-
-
+	//GlitchPass effect
 		glitchPass = new THREE.GlitchPass( THREE.DigitalGlitch);
 		// glitchPass.renderToScreen = true;
 		united.addPass (glitchPass);
 
+	//Glitch Shader effect
+		// glitchPass = new THREE.ShaderPass( THREE.DigitalGlitch);
+		// // // glitchPass.renderToScreen = true;
+		// glitchPass.uniforms['tDisp'].value = 50.0;
+		// united.addPass (glitchPass);
+
+	//BadTV shader
+		effect = new THREE.ShaderPass(THREE.BadTVShader);
+		// effect.uniforms['tDiffuse'].value = 1.0;
+		effect.uniforms['time'].value = 1.0;
+		effect.uniforms['distortion'].value = 2.5;
+		effect.uniforms['distortion2'].value = 1.0;
+		effect.uniforms['speed'].value = 0.1;
+		effect.uniforms['rollSpeed'].value = 8.0;
+		// effect.renderToScreen = true;
+		united.addPass(effect);
+
+	//Colour displacment Shader
 		effect = new THREE.ShaderPass( THREE.RGBShiftShader );
-		effect.uniforms[ 'amount' ].value = 0.0015;
+		effect.uniforms[ 'amount' ].value = 0.07;
 		effect.renderToScreen = true;
 		united.addPass( effect );
 
-		// effect = new THREE.ShaderPass(THREE.BadTVShader);
-		// effect.uniforms['tDiffuse'].value = 1.0;
-		// effect.uniforms['time'].value = 1.0;
-		// effect.uniforms['distortion'].value = 2.5;
-		// effect.uniforms['distortion2'].value = 1.0;
-		// effect.uniforms['speed'].value = 0.1;
-		// effect.uniforms['rollSpeed'].value = 8.0;
-		// effect.renderToScreen = true;
-		// united.addPass(effect);
-
+	//BloomPass
 		// bloomPass = new THREE.BloomPass();
 		// united.addPass (bloomPass);
 
 
+	//Creates renderer stats at the top left of the canvas, Shows fps counter
 		// stats = new Stats();
 		// stats.domElement.style.position = 'absolute';
 		// stats.domElement.style.top = '0px';
 		// $('#Tv1').append( stats.domElement );
 
+	//Mouse event listeners for movement
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
 
-		// scene.fog = new THREE.fog( 0x000000, 2000, 3000 );
-
-
-		// var videoTexture = new THREEx.VideoTexture('Resources/EnterTheBeast.mp4');
-		// var video = videoTexture.video;
-
-
-		// var geometry =  new THREE.CubeGeometry(1,1,1);
-		// var material = new THREE.MeshBasicMaterial({
-		// 	map : videoTexture.texture
-		// });
-
-		// mesh = new THREE.Mesh(geometry, material);
-		// scene.add(mesh);
-
-		// videos.push(function(delta, now){
-		// 	videoTexture.update(delta, now);
-		// 	renderer.render( scene, camera)
-		// })
-
+		
+		
 	}
 
+		//Mouse fucntions
 
 			function onDocumentMouseMove ( event ) {
 
@@ -479,13 +440,15 @@ function ScreenShow(containerID, rotateY){
 				}
 
 
-				function update() {
-					rendertime += 0.01;
+		//update render time
+			function update() {
+				rendertime += 0.01;
 
-				};
+			};
 
 
-				function onWindowResize() {
+		//Resize
+			function onWindowResize() {
 
 				camera.aspect = window.innerWidth / window.innerHeight;
 				camera.updateProjectionMatrix();
@@ -495,30 +458,12 @@ function ScreenShow(containerID, rotateY){
 			};
 
 				
-
+			//update renderer camera and Passes
 				this.animate = function() {
 
-										// render();
-					
-
-					virtualCamera.position.x = -mouseX *4;
-					virtualCamera.position.y = -mouseY *-4;
-					virtualCamera.position.z = cameraZ;
-					virtualCamera.lookAt( scene.position );
-
-					for ( var ii = 0; ii < views.length; ++ii ) {
-
-					view = views[ii];
-					camera = view.camera;
-					view.updateCamera( camera, mouseX, mouseY );
-					// renderer.enableScissorTest ( true );
-					// camera.aspect = width / height;
-					camera.updateProjectionMatrix();
+					render();
 
 					
-					}
-
-					united.render(); // new renderer to render scenes
 					// stats.update();
 					// renderer.render( scene, camera );
 					// effect.render( scene, camera );
@@ -527,7 +472,21 @@ function ScreenShow(containerID, rotateY){
 
 				function render() {
 
-					
-					
+				//Update Virtualcamera for mouse movement
+					virtualCamera.position.x = -mouseX * 3;
+					virtualCamera.position.y = -mouseY *-3;
+					virtualCamera.position.z = cameraZ;
+					virtualCamera.lookAt( scene.position );
+
+					 // new renderer to render scenes
+
+					camera.position.x += ( mouseX - camera.position.x ) * 0.02;
+					camera.position.y += ( - mouseY - camera.position.y ) * 0.02;
+
+
+					if ( video.readyState === video.HAVE_ENOUGH_DATA && videoTexture ) videoTexture.needsUpdate = true;		
+                video.preload = "auto";
+                // renderer.render( scene, camera );	
+                	united.render(scene, camera);
 				};
 };
