@@ -1,6 +1,7 @@
 
 //Booleans for events
 var dead1, dead2, dead3, dead4, dead5, dead6, dead7, dead8;
+var audio = document.getElementById('error');
 
 var main = function(){
 	
@@ -24,36 +25,48 @@ var main = function(){
 		newPosition = ui.item.index();
 
 		if (ui.item.attr("id") == "f1" && ui.item.index() == 3) {
-			alert("You need more Tabs open User, your work is insufficient");
+			audio.play();
+			alert("You need to do more research User, your work is insufficient");
 
-			window.open();
-			window.open();
-			window.open();
-			window.open();
-			window.open();
-			window.open();
-			window.open();
-			window.open();
+			window.open('http://cam-w-331-livetheory.tumblr.com/');
+			window.open('https://www.google.co.nz/search?q=ai+will+take+over+the+world&hl=en-NZ&biw=1280&bih=939&site=webhp&source=lnms&tbm=isch&sa=X&sqi=2&ved=0CAYQ_AUoAWoVChMI6bDsrMvfyAIVQiymCh0uWgUh');
+			window.open('http://store.steampowered.com/');
+			window.open('https://www.youtube.com/watch?v=v6f0MlOylCI');
+			window.open('https://www.youtube.com/watch?v=mR-aAp0vThQ');
+			window.open('https://trello.com/b/bQiduND7/concepts-visuals');
+			window.open('https://www.youtube.com/watch?v=54ojuDslMdw');
+			window.open('https://github.com/GentlemanMog*');
 
 		}else if(ui.item.attr("id") == "f1" && ui.item.index() == 5){
-			window.confirm("User, You require more fun");
-			window.atob();
+			audio.play();
+			window.confirm("FATAL ERROR RELOADING......");
+			audio.play();
+			window.confirm(".....[DONE]");
+			location.reload();
 
-		}else if(ui.item.attr("id") == "f1" && ui.item.index() == 7){
+		}else if(ui.item.attr("id") == "f3" && ui.item.index() == 7){
+			audio.play();
 			window.confirm("System Rebooting");
 			location.reload();
-		}else if(ui.item.attr("id") == "f1" && ui.item.index() == 9){
+		}else if(ui.item.attr("id") == "f7" && ui.item.index() == 9){
+			audio.play();
 			alert("User, What are you doing?");
 		}else if(ui.item.attr("id") == "f1" && ui.item.index() == 11){
+			audio.play();
 			window.confirm("Contact server Aministrator");
 		}else if(ui.item.attr("id") == "f1" && ui.item.index() == 13){
+			audio.play();
 			alert("Access Database: Denied");
 		}else if(ui.item.attr("id") == "f1" && ui.item.index() == 15){
+			audio.play();
 			window.confirm("System is being corrupted");
 		}
 
 		else if (ui.item.attr("id") == "f2" && ui.item.index() == 6) {
-			alert("You need more Tabs open User, your work is insufficient");
+			audio.play();
+			alert("opening Database.....");
+			audio.play();
+			alert("ERROR");
 			window.open();
 			window.open();
 			window.open();
@@ -64,52 +77,75 @@ var main = function(){
 			window.open();
 
 		}else if(ui.item.attr("id") == "f2" && ui.item.index() == 15){
-			window.confirm("User, You require more fun");
-			window.atob();
-
+			audio.play();
+			window.confirm("User, You are corrupting my System");
 		}else if(ui.item.attr("id") == "f5" && ui.item.index() == 6){
+			audio.play();
 			window.confirm("System Rebooting");
 			location.reload();
 		}else if(ui.item.attr("id") == "f8" && ui.item.index() == 2){
+			audio.play();
 			alert("User, What are you doing?");
 		}else if(ui.item.attr("id") == "f10" && ui.item.index() == 1){
+			audio.play();
 			window.confirm("Contact server Aministrator");
 		}else if(ui.item.attr("id") == "f2" && ui.item.index() == 13){
+			audio.play();
 			alert("Access Database: Denied");
 		}else if(ui.item.attr("id") == "f10" && ui.item.index() == 15){
+			audio.play();
 			window.confirm("System is being corrupted");
 		};
 
 		
-//If Certain div's are ina specific place close the window
+//If Certain div's are in a specific place close the window
 		 if (ui.item.attr("id") == "f1" && ui.item.index() == 1) {
 		dead1 = true;
+		audio.play();
+		window.confirm("Bug Splat");
+		audio.play();
+		window.confirm("Bug Splat");
+		audio.play();
+		window.confirm("Bug Splat");
+		audio.play();
+		window.confirm("Bug Splat");
+		audio.play();
+		window.confirm("Bug Splat");
+		audio.play();
 		window.confirm("Bug Splat");
 		}else if(ui.item.attr("id") == "f4" && ui.item.index() == 2){
 			dead2 = true;
+			audio.play();
 			window.confirm("USER Error, Unable to recieve input");
 		}else if(ui.item.attr("id") == "f5" && ui.item.index() == 5){
 			dead3 = true;
+			audio.play();
 			window.confirm("Corrupt Data Found");
 		}else if(ui.item.attr("id") == "f8" && ui.item.index() == 6){
 			dead4 = true;
+			audio.play();
 			window.confirm("Error 404");
 		}else if(ui.item.attr("id") == "f10" && ui.item.index() == 8){
 			dead5 = true;
+			audio.play();
 			window.confirm("Function: move has been disabled");
 		}else if(ui.item.attr("id") == "f11" && ui.item.index() == 11){
 			dead6 = true;
+			audio.play();
 			window.confirm("Virus Detected");
 		}else if(ui.item.attr("id") == "f14" && ui.item.index() == 12){
 			dead7 = true;
+			audio.play();
 			window.confirm("System is being corrupted");
 		}else if(ui.item.attr("id") == "f15" && ui.item.index() == 15){
 			dead8 = true;
+			audio.play();
 			window.confirm("Fatal Error");
 		}
 
 
 		if(dead1 == true && dead2 == true && dead3 == true && dead4 == true && dead5 == true && dead6 == true && dead7 == true && dead8 == true ){
+			audio.play();
 			window.confirm("Protocol 10 Initiated, Commencing with User Deresolution");
 			window.close();
 		};
@@ -119,27 +155,32 @@ var main = function(){
         
 	}).disableSelection();
 
-
-//Make Div tag resizable
-	$('.draggable').resizable({ 
-			animate: true, 
-			containment: "parent", 
-			helper: "ui-resizable-helper", 
-			maxHeight: 482, 
-			maxWidth: 951, 
-			minHeight: 123, 
-			minWidth: 239,
-			ghost: true,
-			autoHide: true,
-			start: function(event, ui){
-				originH = $(this).height();
-				originW = $(this).width();
-
-
-			}
-			// alsoResize: $(this).find('div')
-			// aspectRatio: true
-	});
+///////////////////////////////////////Broken///////////////////////////////////////
+// var currentId;
+// //Make Div tag resizable
+// 	$('.draggable').resizable({ 
+// 			animate: true, 
+// 			containment: "parent", 
+// 			helper: "ui-resizable-helper", 
+// 			maxHeight: 482, 
+// 			maxWidth: 951, 
+// 			minHeight: 123, 
+// 			minWidth: 239,
+// 			ghost: true,
+// 			autoHide: true,
+// 			start: function(event, ui){
+// 			// alert($(ui.element).children('div').attr('id'));
+// 			currentId = $(ui.item).children('div').attr('id');
+// 			},
+// 			resize: function(event, ui){
+// 				$($(ui.item).children('div').attr('id')).css({
+// 					width: ui.size.width + "px",
+// 					height: ui.size.height + "px"
+// 				});
+// 			},
+// 			alsoResize: 'Tv1'
+// 			// aspectRatio: true
+// 	});
 }
 
 $(document).ready(main);
@@ -246,14 +287,9 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 
 
 	var video, videoTexture;
+	var geometry, material;
 
 	init();
-
-//Randomizes the glitchPass
-	function updateOptions() {
-		glitchPass.goWild=canvases.checked;
-	}
-
 
 	function init(){
 
@@ -292,6 +328,8 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 
 	//Loads the Model
 		var loader = new THREE.ColladaLoader();
+		var loader1 = new THREE.ColladaLoader();
+		
 
 			loader.load('Resources/data2.dae', function (collada){
 				collada.scene.traverse( function(child) {
@@ -305,23 +343,79 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
             			scene.add( child );
         			}
     			});
-		// dae.scale.set(30,30,30);
-		// scene.add(dae);
 			});
 
-		//Add VIdeo funtionality to the scene
+		//Transparent mesh for clicking
+			loader1.load('Resources/data2.dae', function (collada){
+				collada.scene.traverse( function(child) {
+        			if( child instanceof THREE.Mesh ) {
 
+        				//sets a new material to the model
+           				child.material = new THREE.MeshBasicMaterial( { color: 0xFFFF33, transparent: true, opacity: 0.001  } );
+        				//scales the model to the appropriate size
+        				// child.position.set(-300,0,0);
+           				child.scale.set(300,300,30);
+           			//Adds the mesh to the scene
+            			scene.add( child );
+
+            //if clicked on invisible mesh ...play video and Remove current shaders and add these shaders 
+            	domEvents.addEventListener(child, 'click', function(event){
+    					console.log('you clicked on the mesh');
+    					video.play();
+
+    					glitchPass = new THREE.GlitchPass();
+						glitchPass.goWild = true;
+						united.addPass (glitchPass);
+    					
+
+    				//BadTv shader
+    					effect = new THREE.ShaderPass(THREE.BadTVShader);
+						// effect.uniforms['tDiffuse'].value = 1.0;
+						effect.uniforms['time'].value = 1.0;
+						effect.uniforms['distortion'].value = 2.5;
+						effect.uniforms['distortion2'].value = 1.0;
+						effect.uniforms['speed'].value = 0.1;
+						effect.uniforms['rollSpeed'].value = 8.0;
+						// effect.renderToScreen = true;
+						united.addPass(effect);
+
+					//Film Shader (black and white)
+						effect = new THREE.ShaderPass(THREE.FilmShader);
+						united.addPass( effect );
+
+					//Mirror shader
+						effect = new THREE.ShaderPass(THREE.MirrorShader);
+						united.addPass(effect);
+
+						effect.renderToScreen = true;
+						}, false);
+        			}
+    			});
+			});
+
+
+		//Add VIdeo funtionality to the scene
 			video = document.getElementById('video');
-			video.width  = 1000;
-			video.height = 1000;
-			video.autoplay = true;
+			video.width  = 50;
+			video.height = 50;
+			video.autoplay = false;
+			video.loop = false;
+			video.muted = true;
 			videoTexture = new THREE.Texture( video );
 			videoTexture.format = THREE.RGBFormat;
+			videoTexture.minFilter = THREE.LinearFilter; 	
 
-				
+			if ( videoTexture.minFilter !== THREE.NearestFilter && videoTexture.minFilter !== THREE.LinearFilter ) {
 
-			var geometry =  new THREE.CubeGeometry(1000,1000,2);
-			var material = new THREE.MeshBasicMaterial({
+    			console.warn( 'THREE.WebGLRenderer: Texture is not power of two. Texture.minFilter is set to THREE.LinearFilter or THREE.NearestFilter. ( ' + videoTexture.sourceFile + ' )' );
+
+			}	
+
+			geometry =  new THREE.CubeGeometry(1080,900,2);
+			geometry.translate(-1080,0,5);
+			// geometry.rotateX(-45);
+			// geometry.rotateY(45);
+			material = new THREE.MeshBasicMaterial({
 				// map : videoTexture.texture
 				// vertexColors: THREE.FaceColors,
 				map: videoTexture
@@ -332,10 +426,9 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 			scene.add(mesh);
 
 
-
 	//Renderer setup
 		renderer = new THREE.WebGLRenderer({ anialias: true });
-		// renderer.setSize(450,220);
+		renderer.setSize(450,220);
 		renderer.setClearColor ( 0x000000 );
 		renderer.setPixelRatio( window.devicePixelRatio);
 		renderer.setSize( container.clientWidth, container.clientHeight);
@@ -352,38 +445,54 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 		united = new THREE.EffectComposer(renderer);
 		united.addPass( new THREE.RenderPass(scene, camera));
 
+
+	//BloomPass ew gross
+		// bloomPass = new THREE.BloomPass();
+		// united.addPass (bloomPass);
+
 	//GlitchPass effect
-		glitchPass = new THREE.GlitchPass( THREE.DigitalGlitch);
+		glitchPass = new THREE.GlitchPass();
 		// glitchPass.renderToScreen = true;
 		united.addPass (glitchPass);
 
+	//FilmShader
+		// effect = new THREE.ShaderPass(THREE.FilmShader);
+		// united.addPass( effect );
+
+		// effect = new THREE.ShaderPass(THREE.CopyShader);
+		// united.addPass( effect );
+
 	//Glitch Shader effect
-		// glitchPass = new THREE.ShaderPass( THREE.DigitalGlitch);
-		// // // glitchPass.renderToScreen = true;
-		// glitchPass.uniforms['tDisp'].value = 50.0;
-		// united.addPass (glitchPass);
+		// effect = new THREE.ShaderPass( THREE.DigitalGlitch);
+		// // // effect.renderToScreen = true;
+		// effect.uniforms['tDisp'].value = 50.0;
+		// united.addPass (effect);
 
 	//BadTV shader
-		effect = new THREE.ShaderPass(THREE.BadTVShader);
+		// effect = new THREE.ShaderPass(THREE.BadTVShader);
 		// effect.uniforms['tDiffuse'].value = 1.0;
-		effect.uniforms['time'].value = 1.0;
-		effect.uniforms['distortion'].value = 2.5;
-		effect.uniforms['distortion2'].value = 1.0;
-		effect.uniforms['speed'].value = 0.1;
-		effect.uniforms['rollSpeed'].value = 8.0;
+		// effect.uniforms['time'].value = 1.0;
+		// effect.uniforms['distortion'].value = 2.5;
+		// effect.uniforms['distortion2'].value = 1.0;
+		// effect.uniforms['speed'].value = 0.1;
+		// effect.uniforms['rollSpeed'].value = 8.0;
 		// effect.renderToScreen = true;
-		united.addPass(effect);
+		// united.addPass(effect);
+
+
 
 	//Colour displacment Shader
 		effect = new THREE.ShaderPass( THREE.RGBShiftShader );
 		effect.uniforms[ 'amount' ].value = 0.07;
-		effect.renderToScreen = true;
+		
 		united.addPass( effect );
 
-	//BloomPass
-		// bloomPass = new THREE.BloomPass();
-		// united.addPass (bloomPass);
+			
 
+			
+		
+
+	effect.renderToScreen = true;
 
 	//Creates renderer stats at the top left of the canvas, Shows fps counter
 		// stats = new Stats();
@@ -395,7 +504,8 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 		document.addEventListener( 'mousemove', onDocumentMouseMove, false );
 		document.addEventListener( 'mousewheel', onDocumentMouseWheel, false );
 
-		
+	//click on mesh events
+		var domEvents   = new THREEx.DomEvents(camera, renderer.domElement);
 		
 	}
 
@@ -448,15 +558,37 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 
 
 		//Resize
-			function onWindowResize() {
+			// function onWindowResize() {
 
-				camera.aspect = window.innerWidth / window.innerHeight;
-				camera.updateProjectionMatrix();
+			// 	camera.aspect = clientX.innerWidth / clientY.innerHeight;
+			// 	camera.updateProjectionMatrix();
 
-				renderer.setSize( window.innerWidth, window.innerHeight );
+			// 	renderer.setSize( clientX.innerWidth, clientY.innerHeight );
 
-			};
+			// };
 
+			function onResize(){
+		var renderW;
+		var renderH;
+
+		if (window.fullSize){
+			var renderW = window.innerWidth;
+			var renderH = window.innerHeight;
+			$('canvas').css({top:0});
+			}else{
+			var renderW = FIXED_SIZE_W;
+			var renderH = FIXED_SIZE_H;
+			//vertically center viz output
+			$('canvas').css({top:window.innerHeight/2 - FIXED_SIZE_H/2});
+		}
+
+		camera.aspect = renderW / renderH;
+		camera.updateProjectionMatrix();
+		renderer.setSize( renderW,renderH);
+	}
+
+			// var windowResize = THREEx.WindowResize(renderer, camera);
+			// 	windowResize.destroy();
 				
 			//update renderer camera and Passes
 				this.animate = function() {
@@ -484,9 +616,10 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 					camera.position.y += ( - mouseY - camera.position.y ) * 0.02;
 
 
-					if ( video.readyState === video.HAVE_ENOUGH_DATA && videoTexture ) videoTexture.needsUpdate = true;		
-                video.preload = "auto";
-                // renderer.render( scene, camera );	
+				if ( video.readyState === video.HAVE_ENOUGH_DATA && videoTexture ) videoTexture.needsUpdate = true;		
+                	video.preload = "auto";
+                	// renderer.render( scene, camera );	
                 	united.render(scene, camera);
 				};
 };
+

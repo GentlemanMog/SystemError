@@ -139,4 +139,30 @@ a:active{
     -moz-animation: blink 0.7s infinite;
     animation: blink 0.7s infinite;
 }
+	
+	@media only screen and (-webkit-device-pixel-ratio:3) {
+		
+	}
+	@media only screen and (max-width : 1200px) {
 
+	}
+
+    /* Medium Devices, Desktops */
+    @media only screen and (max-width : 992px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (max-width : 768px) {
+
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (max-width : 480px) {
+
+    }
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (max-width : 320px) {
+        
+    }
