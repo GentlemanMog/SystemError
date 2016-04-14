@@ -331,7 +331,7 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 		var loader1 = new THREE.ColladaLoader();
 		
 
-			loader.load('Resources/data2.dae', function (collada){
+			loader.load('resources/data2.dae', function (collada){
 				collada.scene.traverse( function(child) {
         			if( child instanceof THREE.Mesh ) {
 
@@ -346,7 +346,7 @@ function ScreenShow(containerID, fullWidth, fullHeight, viewX, viewY, viewWidth,
 			});
 
 		//Transparent mesh for clicking
-			loader1.load('Resources/data2.dae', function (collada){
+			loader1.load('resources/data2.dae', function (collada){
 				collada.scene.traverse( function(child) {
         			if( child instanceof THREE.Mesh ) {
 
